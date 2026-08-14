@@ -1,0 +1,9 @@
+fastapi>=0.141
+uvicorn[standard]>=0.52
+pydantic>=2.13
+tiktoken>=0.13
+playwright>=1.62
+httpx>=0.28
+pytest>=8.0
+deep-translator>=1.11
+ctranslate2>=4.0

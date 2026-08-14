@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+*.local
+
+# Entornos y secretos
+.env
+.env.*
+*.key
+*.pem
+
+# Editor
+.vscode/
+.idea/
+
+# Modelos locales de traducción (se regeneran con scripts/setup_ct2.py --all)
+models/
+
+# Seed de datos local (no se versiona)
+data/sample.json
