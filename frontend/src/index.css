@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4efe4;
+  --color-washi: #ece5d5;
+  --color-ink: #1c1a17;
+  --color-ink-soft: #4a443c;
+  --color-crimson: #e6352c;
+  --color-crimson-dark: #b3261e;
+  --color-gold: #c9a227;
+  --color-line: #2a2622;
+
+  --font-display: "Shippori Mincho", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --shadow-ink: 4px 4px 0 rgba(28, 26, 23, 0.9);
+  --shadow-ink-sm: 2px 2px 0 rgba(28, 26, 23, 0.85);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-paper font-sans text-ink antialiased;
+  background-image:
+    radial-gradient(circle at 82% 18%, rgba(230, 53, 44, 0.16), transparent 42%),
+    radial-gradient(rgba(28, 26, 23, 0.055) 1px, transparent 1.4px);
+  background-size:
+    100% 100%,
+    14px 14px;
+}
+
+/* Grano sutil tipo papel (SVG noise) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.panel {
+  @apply relative border-2 border-ink bg-washi/70 shadow-[4px_4px_0_rgba(28,26,23,0.9)] backdrop-blur-sm p-5;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(28, 26, 23, 0.18);
+  pointer-events: none;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-none border-2 border-ink bg-crimson px-4 py-2 text-sm font-bold text-paper shadow-[3px_3px_0_rgba(28,26,23,0.9)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0_rgba(28,26,23,0.9)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-[3px_3px_0_rgba(28,26,23,0.9)];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-none border-2 border-ink bg-transparent px-4 py-2 text-sm font-bold text-ink shadow-[3px_3px_0_rgba(28,26,23,0.9)] transition hover:bg-paper disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.input {
+  @apply w-full rounded-none border-2 border-ink bg-paper px-3 py-2 text-sm outline-none transition focus:border-crimson focus:shadow-[0_0_0_2px_rgba(230,53,44,0.25)];
+}
+
+.label {
+  @apply mb-1 block font-display text-xs font-bold uppercase tracking-[0.14em] text-ink-soft;
+}
+
+.tag {
+  @apply inline-flex items-center gap-1 rounded-none border border-ink bg-paper px-2 py-0.5 text-xs font-semibold;
+}
+
+.kicker {
+  @apply font-display text-xs font-bold uppercase tracking-[0.28em] text-crimson;
+}
